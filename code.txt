@@ -1,0 +1,49 @@
+db.contactlist.find(
+    {
+        $and:
+        [
+            
+                {
+                    $or:[
+                        {Lastname:{$regex:"ah"}},
+                        {Firstname:{$regex:"ah"}}
+                         ]
+                         
+                },
+                        {age:{$gt:18}}
+                
+        ]
+    }
+                   )
+use contact
+db.createCollection("contactlist")
+db.contactlist.insert({Lastname: "Ben Lahmer", Firstname: "Fares", Email: "fares@gmail.com", age:26})
+db.contactlist.insert({Lastname: "Kefi", Firstname:" Seif", Email: "kefi@gmail.com", age:15})
+db.contactlist.insert({Lastname: "Fatnassi", Firstname: "Sarra", Email: "sarra.f@gmail.com", age:40})
+db.contactlist.insert({Lastname: "Ben Yahia", Firstname: "Rym", age:4})
+db.contactlist.insert({Lastname:" Cherif", Firstname: "Sami", age:3})
+db.contactlist.find({_id:{$eq:ObjectId("60f0835f5b137679c7164687"),}})
+db.contactlist.find({age:{$gt:18}})
+
+
+db.contactlist.find(
+    {
+        $and:
+        [
+            
+                {
+                    $or:[
+                        {Lastname:{$regex:"ah"}},
+                        {Firstname:{$regex:"ah"}}
+                         ]
+                         
+                },
+                        {age:{$gt:18}}
+                
+        ]
+    }
+                   )
+  db.contactlist.update({Lastname:"Kefi",Firstname:"Seif"},{$set:{Firstname:"Anis",Lastname:"Kefi"}})   
+  db.contactlist.deleteMany({age:{$lt:5}})  
+  db.contactlist.find()            
+
